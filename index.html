@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Engineering Portfolio</title>
+  <link rel="stylesheet" href="style.css"/>
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Justin Zhang</h1>
+    <p>Hi, I’m an engineering student passionate about robotics, CAD design, and embedded systems.</p>
+    <div class="theme-toggle">
+      <button id="theme-button">🌙 Dark Mode</button>
+    </div>
+  </header>
+
+  <section class="projects">
+    <div class="project-card"
+         data-title="Electric Longtail Conversion Kit"
+         data-description="<p>A robotic arm project with servos, inverse kinematics, and microcontroller integration.</p>"
+         data-images="longtail1.png,longtail2.png,longtail3.png">
+      <model-viewer src="longtail.glb" alt="3D Model" auto-rotate camera-controls></model-viewer>
+      <h3>Electric Longtail Conversion Kit</h3>
+      <p>A robotic arm with servo motors controlled via microcontroller.</p>
+      <div class="skills">
+        <span class="skill">CAD</span>
+        <span class="skill">Arduino</span>
+        <span class="skill">Kinematics</span>
+      </div>
+    </div>
+
+    <div class="project-card"
+         data-title="Stud-E Study Helper Robot"
+         data-description="<h4>Ideation</h4>
+         <p>The robot was created for a school project, which required that we use certain components and had certain requirements that must be fulfilled. 
+          The problem that our robot was designed to solve was to aid students in studying, by providing snacks/treats for them. 
+          The intention was that it would slowly drive around a table of students that were studying and ask if they would like anything dispensed. 
+          It would then dispense the student's selection and continue on its path. <br> <br>
+          Below is a concept sketch of our robot, which mostly matches our final design.</p>
+         <img src='stude-embed-1.png' alt='Stud-E robot''/>
+
+         <h4>Issues</h4>
+         <p>Our robot, lovingly named Stud-E (internally named Wall-E), had to go through many design iterations (as expected) before taking on his final form. 
+          Some of the major design changes include:
+          <ul>
+            <li>Changing the dispensing mechanism from the originally planned cartridges, to a rotating hopper that had dividers.</li>
+            <li>Changing the accuracy requirement of the dispensing mechanism (less accuracy in amount of items dispensed needed).</li>
+            <li>Changing the placement of most of the sensors and EV3 brick to be in side the chassis (box).</li>
+          </ul> <br>
+          Below shows one of the first prototypes including all the necessary components needed for the dispensing mechanism to work. 
+          The flap (left motor) would later be changed to move in a different axis to reduce the space the assembly took up.</p>
+          <img src='stude-embed-2.jpg' alt='Stud-E robot''/>
+          
+          <h4>Design Work</h4>
+          <p>The design of our custom parts was mostly split up, I ended up designing parts of the track system, and the chassis. 
+            The tracks themselves were a design from Thingiverse, the gears were from Thingiverse, but modified to fit our parts. 
+            The plates that sandwich the tracks and the tensioning mechanism were all designed in-house, and fastened together (as well as to the chassis) with 6-32 x 1-1/2 machine screws. 
+            The chassis itself was prototyped out of HDF, with the final iteration being laser cut out of acrylic. 
+            The chassis is littered with holes that line up with Lego pieces so that we could change around the placement of parts inside the chassis using Lego Technic bricks and pieces. <br> <br>
+            Pictured below is the first prototype of the chassis for Stud-E which was made of MDF instead of the final acrylic as it was cheaper.</p> 
+          <img src='stude-embed-3.jpg' alt='Stud-E robot''/>
+            
+          <h4>Acknowledgement</h4>
+          <p>This project would not have been possible without each and every one of my group members, and their hard work on this project was as follows:
+            <ul>
+              <li>Jordan Wang - Dispenser/Carousel Mechanism/Code</li>
+              <li>Rita Sun - Code/Lego Integration/Hardware Placement</li>
+              <li>Sunil Ratha - Code/Dispenser Flap/Tracks</li>
+            </ul> </p>
+            <img src='stude-embed-4.jpg' alt='Stud-E robot''/>
+          "
+         data-images="stude1.png,stude2.png,stude3.png,stude4.png,stude5.jpg,stude6.jpg">
+      <model-viewer src="example2.glb" alt="3D Model" auto-rotate camera-controls></model-viewer>
+      <h3>Stud-E Study Helper Robot</h3>
+      <p>Co-designed a study helper robot based on the Lego EV3 platform which follows a line and stops at preset points and then dispenses a variety of items</p>
+      <div class="skills">
+        <span class="skill">SolidWorks</span>
+        <span class="skill">3D Printing</span>
+        <span class="skill">Laser Cutting</span>
+        <span class="skill">RobotC</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <div class="modal-carousel">
+        <button class="carousel-button prev">&#10094;</button>
+        <div class="carousel-images" id="modal-images"></div>
+        <button class="carousel-button next">&#10095;</button>
+      </div>
+      <div class="modal-text">
+        <h2 id="modal-title">Project Title</h2>
+        <div id="modal-description">Description goes here...</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const themeButton = document.getElementById('theme-button');
+    const body = document.body;
+
+    themeButton.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      themeButton.textContent = body.classList.contains('dark-mode') ? '☀️ Light Mode' : '🌙 Dark Mode';
+    });
+
+    const modal = document.getElementById('modal');
+    const closeBtn = document.querySelector('.close-button');
+    const modalTitle = document.getElementById('modal-title');
+    const modalDescription = document.getElementById('modal-description');
+    const modalImages = document.getElementById('modal-images');
+    const prevBtn = document.querySelector('.carousel-button.prev');
+    const nextBtn = document.querySelector('.carousel-button.next');
+
+    let images = [];
+    let currentIndex = 0;
+
+    function showImage(index) {
+      images.forEach((img, i) => {
+        img.classList.remove('active');
+      });
+      images[index].classList.add('active');
+    }
+
+    function initCarousel(imageSrcs) {
+      modalImages.innerHTML = '';
+      images = imageSrcs.map(src => {
+        const img = document.createElement('img');
+        img.src = src.trim();
+        modalImages.appendChild(img);
+        return img;
+      });
+      currentIndex = 0;
+      showImage(currentIndex);
+    }
+
+    prevBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      showImage(currentIndex);
+    });
+
+    nextBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % images.length;
+      showImage(currentIndex);
+    });
+
+    document.querySelectorAll('.project-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const title = card.getAttribute('data-title');
+        const description = card.getAttribute('data-description');
+        const imageSrcs = card.getAttribute('data-images').split(',');
+
+        modalTitle.textContent = title;
+        modalDescription.innerHTML = description; // ✅ render rich HTML
+        initCarousel(imageSrcs);
+
+        modal.classList.remove('hidden');
+      });
+    });
+
+    closeBtn.addEventListener('click', () => {
+      modal.classList.add('hidden');
+    });
+
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.add('hidden');
+      }
+    });
+  </script>
+</body>
+</html>
