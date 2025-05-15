@@ -301,3 +301,12 @@ model-viewer {
 .modal-text ul li {
     margin-left: 0;
 }
+
+a {
+  color: var(--accent-color);
+  text-decoration: underline; /* Optional, depends on your design */
+}
+
+a:hover {
+  color: darken(var(--accent-color), 10%); /* Optional hover effect if using a preprocessor */
+}

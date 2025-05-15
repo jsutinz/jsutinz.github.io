@@ -72,14 +72,109 @@
             <img src='stude-embed-4.jpg' alt='Stud-E robot''/>
           "
          data-images="stude1.png,stude2.png,stude3.png,stude4.png,stude5.jpg,stude6.jpg">
-      <model-viewer src="example2.glb" alt="3D Model" auto-rotate camera-controls></model-viewer>
+      <model-viewer src="walle.glb" alt="3D Model" 
+      ar ar-modes="webxr scene-viewer quick-look" 
+      environment-image="legacy"
+      tone-mapping="neutral" poster="poster.webp" 
+      exposure="0.75" 
+      style="transform: rotateX(90deg);"
+      auto-rotate camera-orbit="180deg 90deg 1m"
+      rotation-per-second="4"></model-viewer>
       <h3>Stud-E Study Helper Robot</h3>
       <p>Co-designed a study helper robot based on the Lego EV3 platform which follows a line and stops at preset points and then dispenses a variety of items</p>
       <div class="skills">
         <span class="skill">SolidWorks</span>
+        <span class="skill">AutoCAD</span>
         <span class="skill">3D Printing</span>
         <span class="skill">Laser Cutting</span>
         <span class="skill">RobotC</span>
+      </div>
+    </div>
+
+    <div class="project-card"
+         data-title="Injection Molded Steering Wheel Grips"
+         data-description="
+         <h4>Background</h4>
+         <p>The steering wheel that the grips are for belong to the electric gokart project at Electrium Mobility. 
+          During my co-op with Electrium I was tasked with creating the molds for the grips as well as updating the design of the custom paddle shifters.
+          The reason that injection molding was determined to be the method used to create the grips was because it would be the most durable and provide the most comfort.
+          Comparatively, other methods like a 2 piece grip which sandwiches the steering wheel plate (used by other design teams like Midnight Sun) have known issues which we tried to avoid with our method.</p>
+          
+        <h4>Design of Mold</h4>
+        <p>The overall design of the molds followed <a href='https://docs.google.com/document/d/1vV7jRAVwR1evtPnTu0fTfdmM2aUsuoUPU-df7nERoBg/edit?tab=t.0' target='_blank'>a document</a> 
+          as making molds is a brand new topic to me, so being able to have the main design points in a document was extremely helpful.
+          Some of the main design considerations were: 
+            <ul>
+              <li>Having air venting for bubbles to escape from</li>
+              <li>Where to place the vents and material inlet to avoid places where pockets of air could form</li>
+              <li>How to align, secure, and position mold in relation to the steering wheel plate</li>
+            </ul> </p>
+        <img src='grips-embed-1.png' alt='CAD of Grip Mold''/>"
+          
+         data-images="grips0.jpg,grips5.jpg,grips4.jpg,grips6.jpg,grips3.jpg,grips2.jpg,grips1.jpg">
+      <model-viewer src="steering_wheel.glb" alt="3D Model" 
+      ar ar-modes="webxr scene-viewer quick-look" 
+      environment-image="legacy"
+      tone-mapping="neutral" poster="poster.webp" 
+      exposure="0.75" 
+      auto-rotate camera-orbit="180deg 90deg 1m"
+      rotation-per-second="4"></model-viewer>
+      <h3>Custom Steering Wheel Grips</h3>
+      <p>A custom over-molded pair of steering wheel grips for a go kart</p>
+      <div class="skills">
+        <span class="skill">SolidWorks</span>
+        <span class="skill">Mold Design</span>
+        <span class="skill">Injection Molding</span>
+        <span class="skill">3D Printing</span>
+      </div>
+    </div>
+
+    <div class="project-card"
+         data-title="Charging Lamp Project"
+         data-description="
+         <h4>Design Process</h4>
+         <p>This project was inspired by the traditional Japanese woodworking pattern called kumiko, which is makes use of a repeating geometric pattern that is usually assembled without nails. 
+          After setting some design goals, I got started working out the design in concepts sketches. 
+          After I felt that I had a working design (below) I started to transfer the concepts into SolidWorks.</p>
+          <img src='lamp-embed-1.jpg' alt='Sketch of lamp design''/> <br>
+          
+        <h4>Design/Manufacturing Difficulties</h4>
+        <p>I started out by creating the inner tube and kumiko-pattern diffuser first, as I wanted to test out how well the diffusion was without a dedicated diffusing piece. 
+          Since the LED strips themselves were already well diffused, combined with the paper, made for an even spread of light. 
+          The inside tube was printed from white PLA as to reflect as much light as possible, and allowed for the wires of the LED strip to be routed into the base of the lamp. 
+          <br> <br>
+        An issue that I ran into was with the manufacturing of the kumiko pattern. 
+        In hindsight, 3D printing the kumiko piece was not be best option, as a lot of post-processing needed to be done, because of the supports required for the print. 
+        Additionally, the kumiko pattern being 3D printed also made the piece very fragile, as the thin pieces of the pattern could snap at the layer lines if too much force was applied to them. 
+        If I had the option to, I would have had each kumiko panel laser cut, which would have been much easier and stronger.</p>
+        <img src='lamp-embed-2.jpg' alt='Lamp shroud''/> <br>
+        
+        <h4>Wiring/Charging Hub</h4>
+         <p>The LED strip is powered via USB, which is perfect for my case as I can just plug it into the charging hub. 
+          However, the USB ports are right on the front of the hub, so the charging hub had to be inset into the base enough so that the USB connection for the LED strip can be plugged in internally. 
+          The LED strip also came with inline controls, which I took advantage of and integrated into the base. 
+          The buttons in the case were designed to be print-in-place, so that I didn't need to assemble them separately. 
+          Since I was using an off-the-shelf USB charging hub, it took up more space inside the base as a result of the housing. 
+          This meant that there needed to be wire management cutouts in the base so that everything could fit together into the base.</p>
+          <img src='lamp-embed-3.jpg' alt='Internal wiring of lamp''/> <br>
+        " 
+          
+         data-images="grips0.jpg,grips5.jpg,grips4.jpg,grips6.jpg,grips3.jpg,grips2.jpg,grips1.jpg">
+      <model-viewer src="lamp.glb" alt="3D Model" 
+      ar ar-modes="webxr scene-viewer quick-look" 
+      environment-image="legacy"
+      tone-mapping="neutral" poster="poster.webp" 
+      exposure="0.5" 
+      style="transform: rotateX(180deg);"
+      auto-rotate camera-orbit="45deg 90deg 1m"
+      rotation-per-second="4"></model-viewer>
+      <h3>Charging Lamp Project</h3>
+      <p>A modern take on a traditional lamp style with added functionality</p>
+      <div class="skills">
+        <span class="skill">SolidWorks</span>
+        <span class="skill"></span>
+        <span class="skill">Injection Molding</span>
+        <span class="skill">3D Printing</span>
       </div>
     </div>
   </section>
@@ -156,7 +251,7 @@
         const imageSrcs = card.getAttribute('data-images').split(',');
 
         modalTitle.textContent = title;
-        modalDescription.innerHTML = description; // ✅ render rich HTML
+        modalDescription.innerHTML = description; 
         initCarousel(imageSrcs);
 
         modal.classList.remove('hidden');
