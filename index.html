@@ -5,15 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Engineering Portfolio</title>
   <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
 </head>
 <body>
   <header>
-    <h1>Justin Zhang</h1>
-    <p>Hi, I’m an engineering student passionate about robotics, CAD design, and embedded systems.</p>
     <div class="theme-toggle">
       <button id="theme-button">🌙 Dark Mode</button>
     </div>
+
+    <h1>Justin Zhang</h1>
+    <p>Hi, I’m an engineering student passionate about robotics, CAD design, and embedded systems.</p>
+
+    <div class="top-links">
+      <a href="https://www.linkedin.com/in/justin-zhang-581584251/" target="_blank">
+          <i class="fab fa-linkedin"></i> LinkedIn
+        </button>
+      </a>
+      <a href="https://github.com/jsutinz" target="_blank">
+          <i class="fab fa-github"></i> GitHub
+        </button>
+      </a>
+      <a href="/resume.pdf" target="_blank">
+          <i class="fas fa-file-alt"></i> Resume
+        </button>
+      </a>
+      <a href="#contact">
+          <i class="fas fa-envelope"></i> Contact Me
+        </button>
+      </a>
+    </div>
+
   </header>
 
   <section class="projects">
@@ -21,7 +43,12 @@
          data-title="Electric Longtail Conversion Kit"
          data-description="<p>A robotic arm project with servos, inverse kinematics, and microcontroller integration.</p>"
          data-images="longtail1.png,longtail2.png,longtail3.png">
-      <model-viewer src="longtail.glb" alt="3D Model" auto-rotate camera-controls></model-viewer>
+      <model-viewer src="longtail.glb" alt="3D Model" ar ar-modes="webxr scene-viewer quick-look" 
+      environment-image="legacy"
+      tone-mapping="neutral" poster="poster.webp" 
+      exposure="0.75" 
+      auto-rotate camera-orbit="180deg 90deg 1.75m"
+      rotation-per-second="4"></model-viewer>
       <h3>Electric Longtail Conversion Kit</h3>
       <p>A robotic arm with servo motors controlled via microcontroller.</p>
       <div class="skills">
@@ -77,7 +104,7 @@
       environment-image="legacy"
       tone-mapping="neutral" poster="poster.webp" 
       exposure="0.75" 
-      style="transform: rotateX(90deg);"
+      orientation="0deg 90deg 0deg"
       auto-rotate camera-orbit="180deg 90deg 1m"
       rotation-per-second="4"></model-viewer>
       <h3>Stud-E Study Helper Robot</h3>
@@ -159,7 +186,7 @@
           <img src='lamp-embed-3.jpg' alt='Internal wiring of lamp''/> <br>
         " 
           
-         data-images="grips0.jpg,grips5.jpg,grips4.jpg,grips6.jpg,grips3.jpg,grips2.jpg,grips1.jpg">
+         data-images="lamp1.png,lamp2.png,lamp3.png,lamp4.png,lamp5.jpg,lamp6.jpg,lamp7.jpg">
       <model-viewer src="lamp.glb" alt="3D Model" 
       ar ar-modes="webxr scene-viewer quick-look" 
       environment-image="legacy"
@@ -172,11 +199,28 @@
       <p>A modern take on a traditional lamp style with added functionality</p>
       <div class="skills">
         <span class="skill">SolidWorks</span>
-        <span class="skill"></span>
-        <span class="skill">Injection Molding</span>
+        <span class="skill">Soldering</span>
         <span class="skill">3D Printing</span>
       </div>
     </div>
+
+    <section id="contact" style="padding: 50px 20px; text-align: center;">
+      <h2 style="color: var(--accent-color); font-size: 2rem; margin-bottom: 20px;">Contact Me</h2>
+      <form action="https://getform.io/f/fd4ec26b-a66a-427c-a26f-dc2ea7b98ca6" method="POST" style="max-width: 600px; margin: auto;">
+        <input type="text" name="name" placeholder="Your Name" required 
+               style="width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px; border: 1px solid #ccc;"/>
+        <input type="email" name="email" placeholder="Your Email" required 
+               style="width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px; border: 1px solid #ccc;"/>
+        <textarea name="message" rows="6" placeholder="Your Message" required 
+                  style="width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px; border: 1px solid #ccc;"></textarea>
+        <button type="submit" 
+                style="background-color: var(--accent-color); color: white; padding: 12px 24px; border: none; border-radius: 25px; cursor: pointer; font-weight: bold;">
+          Send Message
+        </button>
+      </form>
+    </section>
+    
+
   </section>
 
   <!-- Modal -->

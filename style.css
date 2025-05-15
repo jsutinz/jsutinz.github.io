@@ -246,7 +246,7 @@ model-viewer {
 }
 
 .carousel-images img {
-    width: 100%;
+    width: 75%;
     height: auto;
     max-height: auto;
     flex-shrink: 0;
@@ -310,3 +310,32 @@ a {
 a:hover {
   color: darken(var(--accent-color), 10%); /* Optional hover effect if using a preprocessor */
 }
+
+.top-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 15px 0;
+    flex-wrap: wrap;
+}
+  
+  .top-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    border: 2px solid var(--accent-color);
+    padding: 8px 14px;
+    border-radius: 20px;
+    transition: all 0.3s;
+    font-weight: bold;
+}
+  
+  .top-links a:hover {
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+}
+
+.top-links i {
+    margin-right: 8px;
+  }
+
+  
