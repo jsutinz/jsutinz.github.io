@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="style.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typeit@8.7.1/dist/index.umd.js"></script>
 </head>
 <body>
   <header>
@@ -14,8 +15,15 @@
       <button id="theme-button">🌙 Dark Mode</button>
     </div>
 
-    <h1>Justin Zhang</h1>
-    <p>Hi, I’m an engineering student passionate about robotics, CAD design, and embedded systems.</p>
+    <div>
+      <h1 id="typed-header">Hi there! I'm Justin Zhang</h1>
+    </div>
+      
+    <p>
+      I'm in 3A Mechatronics Engineering student, welcome to a portfolio of my projects! 
+      I'm passionate about mechanical systems, 3D printing, and am getting more into embedded systems. 
+      Hopefully you are able to find something that I did/made interesting, and if you would like to contact me, there is a contact form at the bottom of the page.
+    </p>
 
     <div class="top-links">
       <a href="https://www.linkedin.com/in/justin-zhang-581584251/" target="_blank">
@@ -226,7 +234,9 @@
   <!-- Modal -->
   <div id="modal" class="modal hidden">
     <div class="modal-content">
-      <span class="close-button">&times;</span>
+      <div class="modal-header">
+        <button class="close-button" onclick="closeModal()">&times;</button>
+      </div>
       <div class="modal-carousel">
         <button class="carousel-button prev">&#10094;</button>
         <div class="carousel-images" id="modal-images"></div>
@@ -260,23 +270,23 @@
     let currentIndex = 0;
 
     function showImage(index) {
-      images.forEach((img, i) => {
-        img.classList.remove('active');
-      });
-      images[index].classList.add('active');
-    }
+  // Slide the carousel container by index * image width
+  const imgWidth = images[0].clientWidth; // get width of one image
+  modalImages.style.transform = `translateX(${-index * imgWidth}px)`;
+}
 
-    function initCarousel(imageSrcs) {
-      modalImages.innerHTML = '';
-      images = imageSrcs.map(src => {
-        const img = document.createElement('img');
-        img.src = src.trim();
-        modalImages.appendChild(img);
-        return img;
-      });
-      currentIndex = 0;
-      showImage(currentIndex);
-    }
+function initCarousel(imageSrcs) {
+  modalImages.innerHTML = '';
+  images = imageSrcs.map(src => {
+    const img = document.createElement('img');
+    img.src = src.trim();
+    modalImages.appendChild(img);
+    return img;
+  });
+  currentIndex = 0;
+  // Reset transform on init
+  modalImages.style.transform = 'translateX(0)';
+}
 
     prevBtn.addEventListener('click', () => {
       currentIndex = (currentIndex - 1 + images.length) % images.length;
@@ -312,5 +322,15 @@
       }
     });
   </script>
+
+<script>
+  new TypeIt("#typed-header", {
+    speed: 100,
+    waitUntilVisible: true,
+  })
+
+    .go();
+</script>
+
 </body>
 </html>
