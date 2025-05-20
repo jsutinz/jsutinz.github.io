@@ -21,7 +21,7 @@
       
     <p>
       I'm in 3A Mechatronics Engineering student, welcome to a portfolio of my projects! 
-      I'm passionate about mechanical systems, 3D printing, and am getting more into embedded systems. 
+      I'm passionate about electro-mechanical systems, 3D printing, and am getting more into embedded systems. 
       Hopefully you are able to find something that I did/made interesting, and if you would like to contact me, there is a contact form at the bottom of the page.
     </p>
 
@@ -49,8 +49,65 @@
   <section class="projects">
     <div class="project-card"
          data-title="Electric Longtail Conversion Kit"
-         data-description="<p>A robotic arm project with servos, inverse kinematics, and microcontroller integration.</p>"
-         data-images="longtail1.png,longtail2.png,longtail3.png">
+         data-date="Jan 2025 - Apr 2025"
+         data-description="
+         <h4>Background/Concept</h4>
+         <p>
+          This project was my term project at Electrium for the W25 coop term. I was tasked with leading a team to bring the concept to life. 
+          The concept being that we would create a 'product' which would allow customers to convert an ordinary pedal bike which they may already have sitting around in their garage, into an electric cargo bike.
+          The idea being that we could provide them a more sustainable alternative of transportation (compared to a car) at a relatively cheap cost and low barrier to entry.
+         </p>
+
+         <h4>Personal Contribution</h4>
+         <p>
+          My personal contribution to this project was leading the mechanical sub-team for the project, 
+          iterating on the mechanical design of the frame and various other components of the project, 
+          performing FEA studies and ensuring that parts are manufacturable, completeing ~75% of the actual manufacutring of the parts, and assisting with wiring and spot welding the battery pack.
+          More details on the team distribution can be found <a href='https://electriummobility.com/docs/W2025-projects/electric_longtail_conversion_kit_2025' target='_blank'>here</a>. 
+         </p>
+
+         <h4>Overall Design</h4>
+         <p>
+          The main mechanical design was cenetered around the custom frame which houses the battery pack, and mounts to an existing bike. 
+          This frame is designed to support cargo on top of the frame, whether that be groceries or a passenger. 
+          Everything is mounted to the frame (i.e. brakes, deraileur, support arm, etc) and thus needs mounting points to support them. 
+          The custom frame itself mounts to two points on the existing bike: the rear dropouts and the chainstays.
+          The battery pack is also custom, being a 12s4p flat pack, which was specially designed and made to fit neatly and compactly under the cargo platform.
+         </p>
+
+         <h4>FEA of Frame</h4>
+         <p>
+          In order to validate the structural integrity of the frame under load, mutliple finite element analyses of the frame under several loading conditions were performed.
+          The first condition is the most basic static load on the top cargo section, to ensure that the frame itself can withstand the 200 Kg load it is rated for while maintaining a FS of 2.
+
+          <img src='longtail-embed-3.png' alt='FEA loading case 1''/>
+
+          The second condition adds loading to the support arm to ensure that it does not fail while the frame is under max load. 
+          Note that dynamic loadings were not calculated and simulated, but the FS of 2 and the higher than normal load rating were used to account for dynamic loads.
+          
+          The last loading case was lateral loads, or to ensure that any side to side forces could be accounted for. 
+          A smaller force of ~100 Kg (with FS of 2) was applied to test this case. Additionally, the mounting points for the rear brake caliper, existing bike frame, and new rear tire were simulated to ensure that they would not fail under load.
+         </p>
+
+        <h4>Design Difficulties</h4>
+         <p>
+          Many of the design difficulties for this project came from the limitation on materials we could work with and our timeline. 
+          For example, the frame would have ideally been made from aluminum tubing, but our team had neither the budget nor the facilities to be able to use such materials,
+          as we did not have anyone who could TIG weld aluminum, so it would need to be outsourced, creating extra cost. 
+          Thus, we settled on using square steel tubing, as it was readily available to us and easy to weld and machine, while also being cheap. 
+          Using steel tubing meant that we had to keep the weight of the frame as low as possible, which was a large challenege as the thinnest wall we had access to was 0.065 in. 
+          This meant we used as little tubing as possible while maintaining a relatively high safety factor, as we would not want the frame to fail even under higher than expected loads.
+          <br> <br>
+          For next time, we would definetly try to use aluminum tubing or butted tubing, which is traditionally used in bike frames, both of which would be much more difficult to manufacture.
+          <img src='longtail-embed-2.jpg' alt='butted tubing diagram''/> <br>
+          Another design challenge was making sure that the frame would fit most bikes, knowing that we wouldn't be able to fit all bikes but trying to fit as many as possible. 
+          Some research was done on what usually changes between different sizes and types of bikes, the main points of interest being rear dropout spacing, tire size, bike casette size, and deraileur mounting style, among many more.
+          This was done by using an telescoping clamping support arm and ensuring that the kit 'provides' as many parts as we can, so that we can control more variables. 
+         </p>
+         <img src='longtail-embed-1.png' alt='telescoping arm''/>
+        
+          "
+        data-images="longtail1.png,longtail2.png,longtail3.png,longtail4.jpg,longtail5.jpg,longtail6.jpg,longtail7.jpg">
       <model-viewer src="longtail.glb" alt="3D Model" ar ar-modes="webxr scene-viewer quick-look" 
       environment-image="legacy"
       tone-mapping="neutral" poster="poster.webp" 
@@ -58,17 +115,21 @@
       auto-rotate camera-orbit="180deg 90deg 1.75m"
       rotation-per-second="4"></model-viewer>
       <h3>Electric Longtail Conversion Kit</h3>
+      <p class="card-date">Jan 2025 - Apr 2025</p>
       <p>A robotic arm with servo motors controlled via microcontroller.</p>
       <div class="skills">
-        <span class="skill">CAD</span>
-        <span class="skill">Arduino</span>
-        <span class="skill">Kinematics</span>
+        <span class="skill">SolidWorks</span>
+        <span class="skill">SW Simulation/FEA</span>
+        <span class="skill">TIG Welding</span>
+        <span class="skill">Battery Pack Design/Manufacturing</span>
       </div>
     </div>
 
     <div class="project-card"
          data-title="Stud-E Study Helper Robot"
-         data-description="<h4>Ideation</h4>
+         data-date="Sept 2023 - Dec 2023"
+         data-description="
+         <h4>Ideation</h4>
          <p>The robot was created for a school project, which required that we use certain components and had certain requirements that must be fulfilled. 
           The problem that our robot was designed to solve was to aid students in studying, by providing snacks/treats for them. 
           The intention was that it would slowly drive around a table of students that were studying and ask if they would like anything dispensed. 
@@ -116,6 +177,7 @@
       auto-rotate camera-orbit="180deg 90deg 1m"
       rotation-per-second="4"></model-viewer>
       <h3>Stud-E Study Helper Robot</h3>
+      <p class="card-date">Sept 2023 - Dec 2023</p>
       <p>Co-designed a study helper robot based on the Lego EV3 platform which follows a line and stops at preset points and then dispenses a variety of items</p>
       <div class="skills">
         <span class="skill">SolidWorks</span>
@@ -128,6 +190,7 @@
 
     <div class="project-card"
          data-title="Injection Molded Steering Wheel Grips"
+         data-date="Mar 2025 - Apr 2025"
          data-description="
          <h4>Background</h4>
          <p>The steering wheel that the grips are for belong to the electric gokart project at Electrium Mobility. 
@@ -155,6 +218,7 @@
       auto-rotate camera-orbit="180deg 90deg 1m"
       rotation-per-second="4"></model-viewer>
       <h3>Custom Steering Wheel Grips</h3>
+      <p class="card-date">Mar 2025 - Apr 2025</p>
       <p>A custom over-molded pair of steering wheel grips for a go kart</p>
       <div class="skills">
         <span class="skill">SolidWorks</span>
@@ -166,6 +230,7 @@
 
     <div class="project-card"
          data-title="Charging Lamp Project"
+         data-date="Jan 2023 - Apr 2023"
          data-description="
          <h4>Design Process</h4>
          <p>This project was inspired by the traditional Japanese woodworking pattern called kumiko, which is makes use of a repeating geometric pattern that is usually assembled without nails. 
@@ -204,6 +269,7 @@
       auto-rotate camera-orbit="45deg 90deg 1m"
       rotation-per-second="4"></model-viewer>
       <h3>Charging Lamp Project</h3>
+      <p class="card-date">Jan 2023 - Apr 2023</p>
       <p>A modern take on a traditional lamp style with added functionality</p>
       <div class="skills">
         <span class="skill">SolidWorks</span>
@@ -244,6 +310,7 @@
       </div>
       <div class="modal-text">
         <h2 id="modal-title">Project Title</h2>
+        <p id="modal-date" class="project-date"></p>
         <div id="modal-description">Description goes here...</div>
       </div>
     </div>
@@ -298,19 +365,32 @@ function initCarousel(imageSrcs) {
       showImage(currentIndex);
     });
 
+    function closeModal() {
+      modal.classList.add('hidden');
+    }
+
+    function closeModal() {
+      modal.classList.add('hidden');
+    }
+
+    const modalDate = document.getElementById('modal-date');
+
     document.querySelectorAll('.project-card').forEach(card => {
       card.addEventListener('click', () => {
         const title = card.getAttribute('data-title');
+        const date = card.getAttribute('data-date');
         const description = card.getAttribute('data-description');
         const imageSrcs = card.getAttribute('data-images').split(',');
 
         modalTitle.textContent = title;
-        modalDescription.innerHTML = description; 
+        modalDate.textContent = date;
+        modalDescription.innerHTML = description;
         initCarousel(imageSrcs);
 
         modal.classList.remove('hidden');
       });
     });
+
 
     closeBtn.addEventListener('click', () => {
       modal.classList.add('hidden');
