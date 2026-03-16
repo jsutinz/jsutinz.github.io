@@ -48,6 +48,86 @@
   </header>
 
   <section class="projects">
+
+    <div class="project-card"
+         data-title="Autonomous Search and Rescue Robot"
+         data-date="Jan 2026 - Apr 2026"
+         data-description="
+         <h4>Background/Concept</h4>
+         <p>
+          This project was my term project at Electrium for the W25 coop term. I was tasked with leading a team to bring the concept to life. 
+          The concept being that we would create a 'product' which would allow customers to convert an ordinary pedal bike which they may already have sitting around in their garage, into an electric cargo bike.
+          The idea being that we could provide them a more sustainable alternative of transportation (compared to a car) at a relatively cheap cost and low barrier to entry.
+         </p>
+
+         <h4>Personal Contribution</h4>
+         <p>
+          My personal contribution to this project was leading the mechanical sub-team for the project, 
+          iterating on the mechanical design of the frame and various other components of the project, 
+          performing FEA studies and ensuring that parts are manufacturable, completeing ~75% of the actual manufacutring of the parts, and assisting with wiring and spot welding the battery pack.
+          More details on the team distribution can be found <a href='https://electriummobility.com/docs/W2025-projects/electric_longtail_conversion_kit_2025' target='_blank'>here</a>. 
+         </p>
+
+         <h4>Overall Design</h4>
+         <p>
+          The main mechanical design was cenetered around the custom frame which houses the battery pack, and mounts to an existing bike. 
+          This frame is designed to support cargo on top of the frame, whether that be groceries or a passenger. 
+          Everything is mounted to the frame (i.e. brakes, deraileur, support arm, etc) and thus needs mounting points to support them. 
+          The custom frame itself mounts to two points on the existing bike: the rear dropouts and the chainstays.
+          The battery pack is also custom, being a 12s4p flat pack, which was specially designed and made to fit neatly and compactly under the cargo platform.
+         </p>
+
+         <h4>FEA of Frame</h4>
+         <p>
+          In order to validate the structural integrity of the frame under load, mutliple finite element analyses of the frame under several loading conditions were performed.
+          The first condition is the most basic static load on the top cargo section, to ensure that the frame itself can withstand the 200 Kg load it is rated for while maintaining a FS of 2.
+
+          <img src='longtail_assets/longtail-embed-3.png' alt='FEA loading case 1''/>
+
+          The second condition adds loading to the support arm to ensure that it does not fail while the frame is under max load. 
+          Note that dynamic loadings were not calculated and simulated, but the FS of 2 and the higher than normal load rating were used to account for dynamic loads.
+          
+          The last loading case was lateral loads, or to ensure that any side to side forces could be accounted for. 
+          A smaller force of ~100 Kg (with FS of 2) was applied to test this case. Additionally, the mounting points for the rear brake caliper, existing bike frame, and new rear tire were simulated to ensure that they would not fail under load.
+         </p>
+
+        <h4>Design Difficulties</h4>
+         <p>
+          Many of the design difficulties for this project came from the limitation on materials we could work with and our timeline. 
+          For example, the frame would have ideally been made from aluminum tubing, but our team had neither the budget nor the facilities to be able to use such materials,
+          as we did not have anyone who could TIG weld aluminum, so it would need to be outsourced, creating extra cost. 
+          Thus, we settled on using square steel tubing, as it was readily available to us and easy to weld and machine, while also being cheap. 
+          Using steel tubing meant that we had to keep the weight of the frame as low as possible, which was a large challenege as the thinnest wall we had access to was 0.065 in. 
+          This meant we used as little tubing as possible while maintaining a relatively high safety factor, as we would not want the frame to fail even under higher than expected loads.
+          <br> <br>
+          For next time, we would definetly try to use aluminum tubing or butted tubing, which is traditionally used in bike frames, both of which would be much more difficult to manufacture.
+          <img src='longtail-embed-2.jpg' alt='butted tubing diagram''/> <br>
+          Another design challenge was making sure that the frame would fit most bikes, knowing that we wouldn't be able to fit all bikes but trying to fit as many as possible. 
+          Some research was done on what usually changes between different sizes and types of bikes, the main points of interest being rear dropout spacing, tire size, bike casette size, and deraileur mounting style, among many more.
+          This was done by using an telescoping clamping support arm and ensuring that the kit 'provides' as many parts as we can, so that we can control more variables. 
+         </p>
+         <img src='longtail_assets/longtail-embed-1.png' alt='telescoping arm''/>
+        
+          "
+        data-images="why_assets/why_1.jpg, why_assets/why2.jpg, why_assets/why3.png, why_assets/why4.png">
+      <model-viewer src="longtail_assets/longtail.glb" alt="3D Model" ar ar-modes="webxr scene-viewer quick-look" 
+      environment-image="legacy"
+      tone-mapping="neutral" poster="poster.webp" 
+      exposure="0.75" 
+      auto-rotate camera-orbit="180deg 90deg 1.75m"
+      rotation-per-second="4"></model-viewer>
+      <h3>Autonomous Search and Resuce Robot</h3>
+      <p class="card-date">Jan 2026 - Apr 2026</p>
+      <p>A computer vision-powered line following robot used for rescue</p>
+      <div class="skills">
+        <span class="skill">OpenCV</span>
+        <span class="skill">PD Control</span>
+        <span class="skill">Rasp Pi Development</span>
+        <span class="skill">DFM/DFMA</span>
+      </div>
+    </div>
+
+
     <div class="project-card"
          data-title="Electric Longtail Conversion Kit"
          data-date="Jan 2025 - Apr 2025"
@@ -81,7 +161,7 @@
           In order to validate the structural integrity of the frame under load, mutliple finite element analyses of the frame under several loading conditions were performed.
           The first condition is the most basic static load on the top cargo section, to ensure that the frame itself can withstand the 200 Kg load it is rated for while maintaining a FS of 2.
 
-          <img src='longtail-embed-3.png' alt='FEA loading case 1''/>
+          <img src='longtail_assets/longtail-embed-3.png' alt='FEA loading case 1''/>
 
           The second condition adds loading to the support arm to ensure that it does not fail while the frame is under max load. 
           Note that dynamic loadings were not calculated and simulated, but the FS of 2 and the higher than normal load rating were used to account for dynamic loads.
@@ -105,11 +185,11 @@
           Some research was done on what usually changes between different sizes and types of bikes, the main points of interest being rear dropout spacing, tire size, bike casette size, and deraileur mounting style, among many more.
           This was done by using an telescoping clamping support arm and ensuring that the kit 'provides' as many parts as we can, so that we can control more variables. 
          </p>
-         <img src='longtail-embed-1.png' alt='telescoping arm''/>
+         <img src='longtail_assets/longtail-embed-1.png' alt='telescoping arm''/>
         
           "
-        data-images="longtail1.png,longtail2.png,longtail3.png,longtail4.jpg,longtail5.jpg,longtail6.jpg,longtail7.jpg">
-      <model-viewer src="longtail.glb" alt="3D Model" ar ar-modes="webxr scene-viewer quick-look" 
+        data-images="longtail_assets/longtail1.png, longtail_assets/longtail2.png, longtail_assets/longtail3.png, longtail_assets/longtail4.jpg, longtail_assets/longtail5.jpg, longtail_assets/longtail6.jpg, longtail_assets/longtail7.jpg">
+      <model-viewer src="longtail_assets/longtail.glb" alt="3D Model" ar ar-modes="webxr scene-viewer quick-look" 
       environment-image="legacy"
       tone-mapping="neutral" poster="poster.webp" 
       exposure="0.75" 
@@ -136,7 +216,7 @@
           The intention was that it would slowly drive around a table of students that were studying and ask if they would like anything dispensed. 
           It would then dispense the student's selection and continue on its path. <br> <br>
           Below is a concept sketch of our robot, which mostly matches our final design.</p>
-         <img src='stude-embed-1.png' alt='Stud-E robot''/>
+         <img src='stude_assets/stude-embed-1.png' alt='Stud-E robot''/>
 
          <h4>Issues</h4>
          <p>Our robot, lovingly named Stud-E (internally named Wall-E), had to go through many design iterations (as expected) before taking on his final form. 
@@ -148,7 +228,7 @@
           </ul> <br>
           Below shows one of the first prototypes including all the necessary components needed for the dispensing mechanism to work. 
           The flap (left motor) would later be changed to move in a different axis to reduce the space the assembly took up.</p>
-          <img src='stude-embed-2.jpg' alt='Stud-E robot''/>
+          <img src='stude_assets/stude-embed-2.jpg' alt='Stud-E robot''/>
           
           <h4>Design Work</h4>
           <p>The design of our custom parts was mostly split up, I ended up designing parts of the track system, and the chassis. 
@@ -157,7 +237,7 @@
             The chassis itself was prototyped out of HDF, with the final iteration being laser cut out of acrylic. 
             The chassis is littered with holes that line up with Lego pieces so that we could change around the placement of parts inside the chassis using Lego Technic bricks and pieces. <br> <br>
             Pictured below is the first prototype of the chassis for Stud-E which was made of MDF instead of the final acrylic as it was cheaper.</p> 
-          <img src='stude-embed-3.jpg' alt='Stud-E robot''/>
+          <img src='stude_assets/stude-embed-3.jpg' alt='Stud-E robot''/>
             
           <h4>Acknowledgement</h4>
           <p>This project would not have been possible without each and every one of my group members, and their hard work on this project was as follows:
@@ -166,10 +246,10 @@
               <li>Rita Sun - Code/Lego Integration/Hardware Placement</li>
               <li>Sunil Ratha - Code/Dispenser Flap/Tracks</li>
             </ul> </p>
-            <img src='stude-embed-4.jpg' alt='Stud-E robot''/>
+            <img src='stude_assets/stude-embed-4.jpg' alt='Stud-E robot''/>
           "
-         data-images="stude1.png,stude2.png,stude3.png,stude4.png,stude5.jpg,stude6.jpg">
-      <model-viewer src="walle.glb" alt="3D Model" 
+         data-images="stude_assets/stude1.png, stude_assets/stude2.png, stude_assets/stude3.png, stude_assets/stude4.png, stude_assets/stude5.jpg, stude_assets/stude6.jpg">
+      <model-viewer src="stude_assets/walle.glb" alt="3D Model" 
       ar ar-modes="webxr scene-viewer quick-look" 
       environment-image="legacy"
       tone-mapping="neutral" poster="poster.webp" 
@@ -208,10 +288,10 @@
               <li>Where to place the vents and material inlet to avoid places where pockets of air could form</li>
               <li>How to align, secure, and position mold in relation to the steering wheel plate</li>
             </ul> </p>
-        <img src='grips-embed-1.png' alt='CAD of Grip Mold''/>"
+        <img src='Grips_assets/grips-embed-1.png' alt='CAD of Grip Mold''/>"
           
-         data-images="grips0.jpg,grips5.jpg,grips4.jpg,grips6.jpg,grips3.jpg,grips2.jpg,grips1.jpg">
-      <model-viewer src="steering_wheel.glb" alt="3D Model" 
+         data-images="Grips_assets/grips0.jpg, Grips_assets/grips5.jpg, Grips_assets/grips4.jpg, Grips_assets/grips6.jpg, Grips_assets/grips3.jpg, Grips_assets/grips2.jpg, Grips_assets/grips1.jpg">
+      <model-viewer src="Grips_assets/steering_wheel.glb" alt="3D Model" 
       ar ar-modes="webxr scene-viewer quick-look" 
       environment-image="legacy"
       tone-mapping="neutral" poster="poster.webp" 
@@ -237,7 +317,7 @@
          <p>This project was inspired by the traditional Japanese woodworking pattern called kumiko, which is makes use of a repeating geometric pattern that is usually assembled without nails. 
           After setting some design goals, I got started working out the design in concepts sketches. 
           After I felt that I had a working design (below) I started to transfer the concepts into SolidWorks.</p>
-          <img src='lamp-embed-1.jpg' alt='Sketch of lamp design''/> <br>
+          <img src='lamp_assets/lamp-embed-1.jpg' alt='Sketch of lamp design''/> <br>
           
         <h4>Design/Manufacturing Difficulties</h4>
         <p>I started out by creating the inner tube and kumiko-pattern diffuser first, as I wanted to test out how well the diffusion was without a dedicated diffusing piece. 
@@ -248,7 +328,7 @@
         In hindsight, 3D printing the kumiko piece was not be best option, as a lot of post-processing needed to be done, because of the supports required for the print. 
         Additionally, the kumiko pattern being 3D printed also made the piece very fragile, as the thin pieces of the pattern could snap at the layer lines if too much force was applied to them. 
         If I had the option to, I would have had each kumiko panel laser cut, which would have been much easier and stronger.</p>
-        <img src='lamp-embed-2.jpg' alt='Lamp shroud''/> <br>
+        <img src='lamp_assets/lamp-embed-2.jpg' alt='Lamp shroud''/> <br>
         
         <h4>Wiring/Charging Hub</h4>
          <p>The LED strip is powered via USB, which is perfect for my case as I can just plug it into the charging hub. 
@@ -257,11 +337,11 @@
           The buttons in the case were designed to be print-in-place, so that I didn't need to assemble them separately. 
           Since I was using an off-the-shelf USB charging hub, it took up more space inside the base as a result of the housing. 
           This meant that there needed to be wire management cutouts in the base so that everything could fit together into the base.</p>
-          <img src='lamp-embed-3.jpg' alt='Internal wiring of lamp''/> <br>
+          <img src='lamp_assets/lamp-embed-3.jpg' alt='Internal wiring of lamp''/> <br>
         " 
           
-         data-images="lamp1.png,lamp2.png,lamp3.png,lamp4.png,lamp5.jpg,lamp6.jpg,lamp7.jpg">
-      <model-viewer src="lamp.glb" alt="3D Model" 
+         data-images="lamp_assets/lamp1.png, lamp_assets/lamp2.png, lamp_assets/lamp3.png, lamp_assets/lamp4.png, lamp_assets/lamp5.jpg, lamp_assets/lamp6.jpg, lamp_assets/lamp7.jpg">
+      <model-viewer src="lamp_assets/lamp.glb" alt="3D Model" 
       ar ar-modes="webxr scene-viewer quick-look" 
       environment-image="legacy"
       tone-mapping="neutral" poster="poster.webp" 
