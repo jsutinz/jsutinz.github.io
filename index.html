@@ -21,9 +21,10 @@
     </div>
       
     <p>
-      I'm in 3A Mechatronics Engineering student, welcome to a portfolio of my projects! 
-      I'm passionate about electro-mechanical systems, 3D printing, and am getting more into embedded systems. 
-      Hopefully you are able to find something that I did/made interesting, and if you would like to contact me, there is a contact form at the bottom of the page.
+      I'm in 3B Mechatronics Engineering student, welcome to a portfolio of my projects! 
+      I'm passionate about electro-mechanical systems, 3D printing, computer vision, human-robot interation/co-development, and vehicle dynamics just to name a few! 
+      Please click on a project to learn more about it, hopefully you are able to find something that I did/made interesting! 
+      If you would like to contact me, there is a contact form at the bottom of the page.
     </p>
 
     <div class="top-links">
@@ -55,59 +56,88 @@
          data-description="
          <h4>Background/Concept</h4>
          <p>
-          This project was my term project at Electrium for the W25 coop term. I was tasked with leading a team to bring the concept to life. 
-          The concept being that we would create a 'product' which would allow customers to convert an ordinary pedal bike which they may already have sitting around in their garage, into an electric cargo bike.
-          The idea being that we could provide them a more sustainable alternative of transportation (compared to a car) at a relatively cheap cost and low barrier to entry.
+          This project was created for the MTE 380 Design Course, which required teams to navigate a course by following a line and then 'rescue' a Lego minifig which symbolizes a person in 
+          danger. The project outlines that the robot must be autonomous and must use some sort of camera along with computer vision for the line following aspect. Additionally, this project
+          was completed in groups, and could not have been done without the help of my amazing groupmates: Sunil Ratha, Khushmeet Kaur, Nathan Ellis, and Andrew Guo.
          </p>
 
          <h4>Personal Contribution</h4>
          <p>
-          My personal contribution to this project was leading the mechanical sub-team for the project, 
-          iterating on the mechanical design of the frame and various other components of the project, 
-          performing FEA studies and ensuring that parts are manufacturable, completeing ~75% of the actual manufacutring of the parts, and assisting with wiring and spot welding the battery pack.
-          More details on the team distribution can be found <a href='https://electriummobility.com/docs/W2025-projects/electric_longtail_conversion_kit_2025' target='_blank'>here</a>. 
+          My personal contribution to this project included designing the chassis of the robot, helping with the code and logic for the state machine of the program, and wiring the robot as well.
          </p>
 
-         <h4>Overall Design</h4>
+        <h4>Overall Design and Constraints</h4>
+          <p>
+            Because this project was for a school design course, we had to create a feasible set of design objectives and constraints that would drive our overall. <br> <br> Those objectives being:
+            <ul>
+              <li>Turning radius of 0.15m</li>
+              <li>Detect next tile and type of tile from 0.3m away</li>
+              <li>Intake and store the Lego</li>
+              <li>Outtake the lego within ½ tile zone.</li>
+              <li>Complete a run within 30 seconds</li>
+              <li>Maximum weight: 5kg</li>
+              <li>Stiff and balanced chassis</li>
+              <li>Robot intake should handle a crash at max velocity</li>
+            </ul> <br>
+            With the constraints being:
+            <ul>
+              <li>Size Limit: 0.22m x 0.22m x 0.25m.</li>
+              <li>No detaching components</li>
+              <li>Remain on the red-line path</li>
+              <li>No prohibited designs </li>
+              <li>Budget maximum: 300 CAD</li>
+              <li>No plastic deformation</li>
+              <li>No corrosion under environmental conditions </li>
+              <li>Manufacturable within our resources</li>
+            </ul> <br>
+          </p>
+
+         <h4>Chassis Design</h4>
          <p>
-          The main mechanical design was cenetered around the custom frame which houses the battery pack, and mounts to an existing bike. 
-          This frame is designed to support cargo on top of the frame, whether that be groceries or a passenger. 
-          Everything is mounted to the frame (i.e. brakes, deraileur, support arm, etc) and thus needs mounting points to support them. 
-          The custom frame itself mounts to two points on the existing bike: the rear dropouts and the chainstays.
-          The battery pack is also custom, being a 12s4p flat pack, which was specially designed and made to fit neatly and compactly under the cargo platform.
-         </p>
-
-         <h4>FEA of Frame</h4>
-         <p>
-          In order to validate the structural integrity of the frame under load, mutliple finite element analyses of the frame under several loading conditions were performed.
-          The first condition is the most basic static load on the top cargo section, to ensure that the frame itself can withstand the 200 Kg load it is rated for while maintaining a FS of 2.
-
-          <img src='longtail_assets/longtail-embed-3.png' alt='FEA loading case 1''/>
-
-          The second condition adds loading to the support arm to ensure that it does not fail while the frame is under max load. 
-          Note that dynamic loadings were not calculated and simulated, but the FS of 2 and the higher than normal load rating were used to account for dynamic loads.
+          Some of the main design goals for the chassis were: minimum footprint, modularity for components which could change later down the line, ease of manufacturing/assembly, and ease of wiring.
           
-          The last loading case was lateral loads, or to ensure that any side to side forces could be accounted for. 
-          A smaller force of ~100 Kg (with FS of 2) was applied to test this case. Additionally, the mounting points for the rear brake caliper, existing bike frame, and new rear tire were simulated to ensure that they would not fail under load.
+          The original plan for the robot was to have a custom gearbox (created by Andrew Guo), but the budget didn't end up working out so our team had to pivot to purchasing a set of motors with
+          built-in gearboxes. This change drove the rest of the design as it was the single largest component of the robot, so our chassis went thru several iterations before landing on the current
+          design. The first complete iteration is shown below.
+
+          <img src='why_assets/why_embed1.png' alt='first complete iteration of robot''/>
+         </p>
+
+         <h4>CV/Controls Design</h4>
+         <p>
+          The main architecture of the main program loop is a state machine in which states use various firmware controllers and classes which interact with the hardware to produce the desired output from a command.
+          One of these classes is the perception class, which contains the all the vision code. The perception class is built on the OpenCV library. It starts by taking a 480x640p video feed, then applying
+          various masks to isolate and filter the desired color (red, for the line) and then fits lines to the edges of the filtered image. Once the red line has been isolated and lines have been fitted
+          to it, a heading or angular error is calculated by extrapolating the angle between the vertical at center of the frame and the line fitted to a point higher in the frame, which is specified 
+          as the 'lookahead distance'. This info is then fed into another controller which changes the heading error into a drive command, thus creating the main line following loop. 
+
+          <img src='why_assets/why_embed2.jpg' alt='video feed and applied masks''/>
+
+          As for the drive controller, a Proportional-Derivative (PD) controller was implemented which aimed to minimize cross track error by outputting drive commands to realign the robot with the red line.
+          An additional PD controller was created to ramp the speed both up and down, for entering and exiting corners. This slowing as we entered the corner was implemented to allow us to control the turns as best as possible.
          </p>
 
         <h4>Design Difficulties</h4>
          <p>
-          Many of the design difficulties for this project came from the limitation on materials we could work with and our timeline. 
-          For example, the frame would have ideally been made from aluminum tubing, but our team had neither the budget nor the facilities to be able to use such materials,
-          as we did not have anyone who could TIG weld aluminum, so it would need to be outsourced, creating extra cost. 
-          Thus, we settled on using square steel tubing, as it was readily available to us and easy to weld and machine, while also being cheap. 
-          Using steel tubing meant that we had to keep the weight of the frame as low as possible, which was a large challenege as the thinnest wall we had access to was 0.065 in. 
-          This meant we used as little tubing as possible while maintaining a relatively high safety factor, as we would not want the frame to fail even under higher than expected loads.
-          <br> <br>
-          For next time, we would definetly try to use aluminum tubing or butted tubing, which is traditionally used in bike frames, both of which would be much more difficult to manufacture.
-          <img src='longtail-embed-2.jpg' alt='butted tubing diagram''/> <br>
-          Another design challenge was making sure that the frame would fit most bikes, knowing that we wouldn't be able to fit all bikes but trying to fit as many as possible. 
-          Some research was done on what usually changes between different sizes and types of bikes, the main points of interest being rear dropout spacing, tire size, bike casette size, and deraileur mounting style, among many more.
-          This was done by using an telescoping clamping support arm and ensuring that the kit 'provides' as many parts as we can, so that we can control more variables. 
-         </p>
-         <img src='longtail_assets/longtail-embed-1.png' alt='telescoping arm''/>
-        
+          One of the biggest design difficulties that we faced was being slightly too wide for the turn on the track. This is due to the unforseen issue that even in their most compact positions, the motors caused
+          the track width of the robot to be just too wide and it would drive off course on some turns. 
+
+          <img src='why_assets/why_embed3.png' alt='image of track'/>
+
+          This issue was resolved by reducing the wheelbase by shrinking the size of the wheel mounting hubs slightly, as well as bringing the motors as close as they could be. Additionally, we determined that
+          the issue also stemmed from the camera being too far away from the rear (driving) axle. This would cause us to be looking too far ahead, leading to turns being too early and drifting off track as well
+          as turning too soon and losing sight of the line altogether. <br> <br>
+
+          Thus, the overall length and width of the robot had to be reduced in order for our line following to work as intended. The length reduction was accomplished by flipping the L298N motor driver and buck converter
+          board so that they are perpendicular with the baseplate of the chassis. Additionally, the ball caster that was used for the first complete iteration had to be replaced as it was too large. Thus, a custom ball caster 
+          and mount was created to accomodate the new size changes. In the end, around 40 mm was cut from the length, and 15 mm was cut from the width of the first iteration compared to the second (final) iteration.
+
+          <img src='why_assets/why_embed4.png' alt='image of track'/>
+         
+          <video controls>
+            <source src='why_assets/why_vid1.mp4' type='video/mp4'>
+          </video>
+        </p>      
           "
         data-images="why_assets/why_1.jpg, why_assets/why2.jpg, why_assets/why3.png, why_assets/why4.png">
       <model-viewer src="why_assets/why_bot.glb" alt="3D Model" ar ar-modes="webxr scene-viewer quick-look" 
@@ -118,7 +148,7 @@
       rotation-per-second="4"></model-viewer>
       <h3>Autonomous Search and Resuce Robot</h3>
       <p class="card-date">Jan 2026 - Apr 2026</p>
-      <p>A computer vision-powered line following robot used for rescue</p>
+      <p>A compact computer vision-powered line following robot used for search & rescue</p>
       <div class="skills">
         <span class="skill">OpenCV</span>
         <span class="skill">PD Control</span>
@@ -180,7 +210,7 @@
           This meant we used as little tubing as possible while maintaining a relatively high safety factor, as we would not want the frame to fail even under higher than expected loads.
           <br> <br>
           For next time, we would definetly try to use aluminum tubing or butted tubing, which is traditionally used in bike frames, both of which would be much more difficult to manufacture.
-          <img src='longtail-embed-2.jpg' alt='butted tubing diagram''/> <br>
+          <img src='longtail_assets/longtail-embed-2.jpg' alt='butted tubing diagram''/> <br>
           Another design challenge was making sure that the frame would fit most bikes, knowing that we wouldn't be able to fit all bikes but trying to fit as many as possible. 
           Some research was done on what usually changes between different sizes and types of bikes, the main points of interest being rear dropout spacing, tire size, bike casette size, and deraileur mounting style, among many more.
           This was done by using an telescoping clamping support arm and ensuring that the kit 'provides' as many parts as we can, so that we can control more variables. 
@@ -450,11 +480,11 @@ function initCarousel(imageSrcs) {
     });
 
     function closeModal() {
-      modal.classList.add('hidden');
-    }
+      modal.classList.remove('show');
 
-    function closeModal() {
+      setTimeout(() => {
       modal.classList.add('hidden');
+      }, 300); // match CSS transition time
     }
 
     const modalDate = document.getElementById('modal-date');
@@ -472,6 +502,7 @@ function initCarousel(imageSrcs) {
         initCarousel(imageSrcs);
 
         modal.classList.remove('hidden');
+        setTimeout(() => modal.classList.add('show'), 10);
       });
     });
 

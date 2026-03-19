@@ -121,6 +121,17 @@ header p {
     color: #666;
 }
 
+.project-card video {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    display: block;
+    margin-bottom: 20px;
+    overflow-x: hidden;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
 @media (max-width: 768px) {
     .projects {
         flex-direction: column;
@@ -181,18 +192,63 @@ model-viewer {
     justify-content: center;
     align-items: center;
     z-index: 1000;
+
+    opacity: 0;
+    transform: scale(0.95);
+
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.modal.show {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+}
+
+.modal.show .modal-content {
+    transform: translateY(0);
 }
 
 .modal-content {
     position: relative;
-    background: white;
+    background: var(--card-bg);
+    color: var(--text-color);
     max-width: 900px;
     width: 90%;
     padding: 2rem;
     border-radius: 16px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
     overflow-y: auto;
+    overflow-x: hidden; /* prevent horizontal overflow (fix for video overshooting) */
     max-height: 90vh;
+
+    scrollbar-color: var(--accent-color) transparent;
+
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+/* Webkit (Chrome, Edge, Safari) */
+.modal-content::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Keep track clean (no aggressive rounding) */
+.modal-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Rounded thumb ONLY (not track) */
+.modal-content::-webkit-scrollbar-thumb {
+  background-color: var(--accent-color);
+  border-radius: 999px; /* pill shape */
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+/* Optional hover */
+.modal-content::-webkit-scrollbar-thumb:hover {
+  opacity: 0.8;
 }
 
 .modal-content img {
@@ -213,7 +269,8 @@ model-viewer {
     background: none;
     border: none;
     font-size: 2rem;
-    color: #999;
+    color: var(--text-color);
+    opacity: 0.6;
     cursor: pointer;
     padding: 0.5rem;
     margin-right: 0.5rem;
@@ -224,7 +281,7 @@ model-viewer {
 }
 
 .hidden {
-    display: none;
+  visibility: hidden;
 }
 
 .modal-images {
