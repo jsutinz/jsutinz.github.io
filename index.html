@@ -10,10 +10,10 @@
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/typeit@8.7.1/dist/index.umd.js"></script>
 </head>
-<body>
+<body class="dark-mode">
   <header>
     <div class="theme-toggle">
-      <button id="theme-button">🌙 Dark Mode</button>
+      <button id="theme-button">☀️ Light Mode</button>
     </div>
 
     <div>
@@ -110,7 +110,7 @@
         
           "
         data-images="why_assets/why_1.jpg, why_assets/why2.jpg, why_assets/why3.png, why_assets/why4.png">
-      <model-viewer src="longtail_assets/longtail.glb" alt="3D Model" ar ar-modes="webxr scene-viewer quick-look" 
+      <model-viewer src="why_assets/why_bot.glb" alt="3D Model" ar ar-modes="webxr scene-viewer quick-look" 
       environment-image="legacy"
       tone-mapping="neutral" poster="poster.webp" 
       exposure="0.75" 
@@ -403,7 +403,10 @@
 
     themeButton.addEventListener('click', () => {
       body.classList.toggle('dark-mode');
-      themeButton.textContent = body.classList.contains('dark-mode') ? '☀️ Light Mode' : '🌙 Dark Mode';
+      // Set correct initial button text based on current mode
+      themeButton.textContent = body.classList.contains('dark-mode')
+        ? '☀️ Light Mode'
+        : '🌙 Dark Mode';
     });
 
     const modal = document.getElementById('modal');
